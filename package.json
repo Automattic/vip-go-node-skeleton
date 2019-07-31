@@ -1,0 +1,19 @@
+{
+  "name": "vip-go-node-skeleton",
+  "version": "0.0.1",
+  "description": "A Node app skeleton for WordPress.com VIP Platform",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Automattic/vip-go-node-skeleton.git"
+  },
+  "author": "Ahmed EL AZZABI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Automattic/vip-go-node-skeleton/issues"
+  },
+  "homepage": "https://github.com/Automattic/vip-go-node-skeleton#readme"
+}
