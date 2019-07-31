@@ -4,7 +4,7 @@
   "description": "A Node app skeleton for WordPress.com VIP Platform",
   "main": "dist/index.js",
   "scripts": {
-    "test": "test",
+    "test": "npx @automattic/vip-go-preflight-checks",
     "build": "babel src -d dist",
     "start": "node ./dist/index.js"
   },
