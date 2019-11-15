@@ -19,9 +19,9 @@
   },
   "homepage": "https://github.com/Automattic/vip-go-node-skeleton#readme",
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5"
+    "@babel/cli": "7.5.5",
+    "@babel/core": "7.5.5",
+    "@babel/preset-env": "7.5.5"
   },
   "dependencies": {
     "@automattic/vip-go": "^0.3.2"
