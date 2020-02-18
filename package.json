@@ -21,7 +21,7 @@
   "devDependencies": {
   },
   "dependencies": {
-    "@automattic/vip-go": "^0.3.2",
+    "@automattic/vip-go": "^1.0.0",
     "@babel/cli": "7.5.5",
     "@babel/core": "7.5.5",
     "@babel/preset-env": "7.5.5"
