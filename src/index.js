@@ -1,12 +1,15 @@
-import { server, logger } from '@automattic/vip-go';
+var express = require( 'express' );
+var app = express();
+const PORT = process.env.PORT || 3000;
 
-const log = logger( 'vip-node-skeleton:server-requests' );
+app.get( '/cache-healthcheck', function( req, res ) {
+	res.sendStatus( 200 );
+} );
 
-const requestHandler = ( req, res ) => {
-    log.info( `New request ${ req.method } to ${ req.url }` );
-    res.end( 'Hello from VIP Node Skeleton' );
-};
+app.get( '/', function( req, res ) {
+	res.send( 'Howdy!' );
+} );
 
-const myServer = server( requestHandler );
-
-myServer.listen();
+app.listen( PORT, function() {
+	console.log( 'App is listening on port:', PORT );
+} );
