@@ -2,7 +2,7 @@ var express = require( 'express' );
 var app = express();
 const PORT = process.env.PORT || 3000;
 
-// Used by the monitoring system on VIP Go to verify the health of the app
+// Used by the monitoring system on VIP to verify the health of the app
 // Should return 200 when the app is healthy
 // https://docs.wpvip.com/technical-references/vip-platform/node-js/
 app.get( '/cache-healthcheck', function( req, res ) {
