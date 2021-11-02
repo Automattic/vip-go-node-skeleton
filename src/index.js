@@ -7,7 +7,7 @@ const app = http.createServer( ( req, res ) => {
 	let { pathname: requestPath } = new URL( req.url, BASEURL );
 
 	// Remove trailing slash from the request path, if exists.
-	requestPath = requestPath.endsWith( '/' ) ? requestPath.slice( 0, -1 ) : requestPath;
+	requestPath = ( requestPath.length > 1 && requestPath.endsWith( '/' ) ) ? requestPath.slice( 0, -1 ) : requestPath;
 
 	if ( '/' === requestPath && [ 'GET', 'HEAD' ].includes( req.method ) ) {
 		res.writeHead( 200 );
