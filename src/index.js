@@ -4,10 +4,7 @@ const PORT = process.env.PORT || 3000;
 const BASEURL = process.env.BASEURL || 'http://localhost/';
 
 const app = http.createServer( ( req, res ) => {
-	let { pathname: requestPath } = new URL( req.url, BASEURL );
-
-	// Remove trailing slash from the request path, if exists.
-	requestPath = ( requestPath.length > 1 && requestPath.endsWith( '/' ) ) ? requestPath.slice( 0, -1 ) : requestPath;
+	const { pathname: requestPath } = new URL( req.url, BASEURL );
 
 	if ( '/' === requestPath && [ 'GET', 'HEAD' ].includes( req.method ) ) {
 		res.writeHead( 200 );
