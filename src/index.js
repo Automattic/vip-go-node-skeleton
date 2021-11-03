@@ -1,18 +1,33 @@
-var express = require( 'express' );
-var app = express();
+const http = require( 'http' );
+
 const PORT = process.env.PORT || 3000;
+const BASEURL = process.env.BASEURL || 'http://localhost/';
 
-// Used by the monitoring system on VIP to verify the health of the app
-// Should return 200 when the app is healthy
-// https://docs.wpvip.com/technical-references/vip-platform/node-js/
-app.get( '/cache-healthcheck', function( req, res ) {
-	res.sendStatus( 200 );
+const app = http.createServer( ( req, res ) => {
+	const { pathname: requestPath } = new URL( req.url, BASEURL );
+
+	if ( '/' === requestPath && [ 'GET', 'HEAD' ].includes( req.method ) ) {
+		res.writeHead( 200 );
+		res.end( "Howdy!" );
+		return;
+	}
+
+	// Used by the monitoring system on VIP to verify the health of the app
+	// Should return 200 when the app is healthy
+	// https://docs.wpvip.com/technical-references/vip-platform/node-js/
+	if ( '/cache-healthcheck' === requestPath && [ 'GET', 'HEAD' ].includes( req.method ) ) {
+		res.writeHead( 200 );
+		res.end( );
+		return;
+	}
+
+	res.writeHead( 404 );
+	res.end( );
 } );
 
-app.get( '/', function( req, res ) {
-	res.send( 'Howdy!' );
-} );
 
-app.listen( PORT, function() {
+app.on( 'listening', () => {
 	console.log( 'App is listening on port:', PORT );
 } );
+
+app.listen( PORT );
