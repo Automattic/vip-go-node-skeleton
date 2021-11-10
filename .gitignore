@@ -6,9 +6,6 @@ yarn-error.log*
 # Dependency directories
 node_modules/
 
-# TypeScript v1 declaration files
-typings/
-
 # Optional npm cache directory
 .npm
 
