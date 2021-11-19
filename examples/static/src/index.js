@@ -13,24 +13,24 @@ const BASEURL = process.env.BASEURL || 'http://localhost/';
 /**
  * Handle healthcheck requests
  * 
- * This must be declared before any other routes
- * to ensure it has priority
+ * This is a requirement for any application running
+ * in the VIP environment:
+ * - must handle url "/cache-healthcheck?" with trailing question mark
+ * - must respond with 200 status
+ * - must only send a short response eg "ok"
+ * - must respond immediately, without delay
+ * - must prioritize this above other routes
+ * - should not execute significant code before, during, or after
+ * - must terminate the session
+ * 
+ * Test: curl -v "https://example.com/cache-healthcheck?" 
  */
 app.get( '/cache-healthcheck?', function (req, res) {
 	res.status( 200 ).send( 'Ok' );
 });
 
 /**
- * uncomment this block to test
- */
-/*
-app.get( '/', (req, res) => {
-	res.send( 'Hello!' );
-})
-*/
-
-/**
- * Serve the files in public under the root (/) path
+ * Serve the files in ./public under the root (/) path
  */
 app.use( '/', express.static( path.join( __dirname, 'public') ) );
 
