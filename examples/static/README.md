@@ -9,7 +9,6 @@ into one or more directories and then serve them, provided they exist.
 
 Note there are additional dependencies in the package.json
 - Express
-- Path
 
 ## Caveats
 - While the files are stored in the `public` subfolder (e.g., `/public/assets/hello.jpg`), this example serves those files at the root of the server. Make sure that your frontend uses the correct path (e.g., `/assets/hello.jpg`).
@@ -17,6 +16,5 @@ Note there are additional dependencies in the package.json
 ## To use:
 - place in the root directory of your repository
 - drop your static files into src/public
-- npm install
-- npm test
-- build, and deploy
+- `npm install`
+- `npm start`
