@@ -12,7 +12,7 @@ Note there are additional dependencies in the package.json
 - Path
 
 ## Caveats
-- The static files will be served at the path declared in the code, so any links in the HTML should be relative links
+- While the files are stored in the `public` subfolder (e.g., `/public/assets/hello.jpg`), this example serves those files at the root of the server. Make sure that your frontend uses the correct path (e.g., `/assets/hello.jpg`).
 
 ## To use:
 - place in the root directory of your repository
