@@ -1,0 +1,2 @@
+# don't commmit package-lock for examples
+package-lock.json
