@@ -3,7 +3,7 @@
 This example is a modified version of the skeleton code,
 designed to demonstrate serving static files.
 
-This uses Express to handle most of the logic, making
+This uses [Express](https://expressjs.com/) to handle most of the logic, making
 it very simple to just drop HTML, JS, CSS, and supporting files
 into one or more directories and then serve them, provided they exist.
 
