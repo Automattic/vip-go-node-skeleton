@@ -25,7 +25,7 @@ const BASEURL = process.env.BASEURL || 'http://localhost';
  * 
  * Test: curl -v "https://example.com/cache-healthcheck?" 
  */
-app.get( '/cache-healthcheck?', function (req, res) {
+app.get( '/cache-healthcheck', function (req, res) {
 	res.status( 200 ).send( 'Ok' );
 });
 
