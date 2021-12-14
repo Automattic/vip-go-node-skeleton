@@ -24,12 +24,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Hello World!
-        </p>
         <div>
           <Clock value={value} />
         </div>
+        <p>
+          Hello World!
+        </p>
       </header>
     </div>
   );
