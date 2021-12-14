@@ -30,10 +30,10 @@ app.get( '/cache-healthcheck?', function (req, res) {
 });
 
 /**
- * Serve the files in ./public under the root (/) path
+ * Serve the React build (in client/build/) under the root (/) path
  */
-app.use( '/', express.static( path.join( __dirname, 'public') ) );
+app.use( '/', express.static( path.join( __dirname, '../client/build') ) );
 
 app.listen( PORT, () => {
-	console.log( `Static example listening on ${BASEURL}:${PORT}` );
+	console.log( `Static React example listening on ${BASEURL}:${PORT}` );
 })

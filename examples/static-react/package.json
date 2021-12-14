@@ -1,7 +1,7 @@
 {
-  "name": "vip-go-node-skeleton-examples-static",
+  "name": "vip-go-node-skeleton-examples-static-react",
   "version": "0.0.1",
-  "description": "Node static service example for WPVIP",
+  "description": "Node static service with React example for WPVIP",
   "main": "src/index.js",
   "scripts": {
     "test": "npx @automattic/vip-go-preflight-checks --verbose --wait=2000",
@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/Automattic/vip-go-node-skeleton/issues"
   },
-  "homepage": "https://github.com/Automattic/vip-go-node-skeleton/examples/static/",
+  "homepage": "https://github.com/Automattic/vip-go-node-skeleton/examples/static-react/",
   "devDependencies": {},
   "dependencies": {
     "express": "^4.17.1"
