@@ -1,0 +1,21 @@
+{
+  "name": "vip-go-node-skeleton-examples-static",
+  "version": "0.0.1",
+  "description": "Node static service example for WPVIP",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "npx @automattic/vip-go-preflight-checks --verbose --wait=2000",
+    "build": "cd client && npm install && npm run build",
+    "start": "node ./src/index.js"
+  },
+  "author": "Roger Theriault",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Automattic/vip-go-node-skeleton/issues"
+  },
+  "homepage": "https://github.com/Automattic/vip-go-node-skeleton/examples/static/",
+  "devDependencies": {},
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
