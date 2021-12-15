@@ -7,6 +7,10 @@ const path = require( 'path' );
 
 const app = express();
 
+/**
+ * set up the POST and BASEURL from env vars
+ * (or use defaults when testing)
+ */
 const PORT = process.env.PORT || 3000;
 const BASEURL = process.env.BASEURL || 'http://localhost';
 
@@ -34,6 +38,10 @@ app.get( '/cache-healthcheck', function (req, res) {
  */
 app.use( '/', express.static( path.join( __dirname, '../client/build') ) );
 
+/**
+ * Listen for connections on the designated port
+ * Each request is handled above
+ */
 app.listen( PORT, () => {
 	console.log( `Static React example listening on ${BASEURL}:${PORT}` );
 })
