@@ -7,11 +7,13 @@ import Clock from 'react-clock';
 import 'react-clock/dist/Clock.css';
 
 function App() {
-  const [value, setValue] = useState(new Date());
+  // initialize clocktime as a state variable
+  const [clocktime, setClocktime] = useState(new Date());
 
+  // update clocktime every second
   useEffect(() => {
     const interval = setInterval(
-      () => setValue(new Date()),
+      () => setClocktime(new Date()),
       1000
     );
 
@@ -20,12 +22,12 @@ function App() {
     }
   }, []);
 
-
+  // render the app, including the clock
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          <Clock value={value} />
+          <Clock value={clocktime} />
         </div>
         <p>
           Hello World!
