@@ -3,6 +3,10 @@
 This example is a modified version of the skeleton code,
 designed to demonstrate serving static files.
 
+You'll find a more detailed discussion of this example (and others) in our
+documentation website:
+[Serve static content](https://docs.wpvip.com/how-tos/serve-static-content/)
+
 This uses [Express](https://expressjs.com/) to handle most of the logic, making
 it very simple to just drop HTML, JS, CSS, and supporting files
 into one or more directories and then serve them, provided they exist.
