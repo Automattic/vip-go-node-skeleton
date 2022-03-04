@@ -1,5 +1,5 @@
 const http = require( 'http' );
-const IntegerService = require( './websocket' );
+const IntegerSocketServer = require( './websocket' );
 
 const PORT = process.env.PORT || 3000;
 
@@ -43,22 +43,15 @@ app.on( 'listening', () => {
 	console.log( `websocat "ws://localhost:${ PORT }/_ws/"` );
 } );
 
-const odds = new IntegerService( 1 );
-const evens = new IntegerService( 2 );
+// Create a single, shared WebSocket server.
+const socketServer = new IntegerSocketServer();
 
 app.on( 'upgrade', ( req, socket, head ) => {
 	const baseUrl = `http://${ req.headers.host }`;
-	const { pathname: requestPath, search } = new URL( req.url, baseUrl );
+	const { pathname: requestPath } = new URL( req.url, baseUrl );
 
-  if ( requestPath.startsWith( '/socket.io' ) || requestPath.startsWith( '/_ws' ) ) {
-		// If evens were requested:
-		if ( '?even' === search ) {
-			evens.onConnectionUpgrade( req, socket, head );
-			return;
-		}
-
-		// Default to odds.
-		odds.onConnectionUpgrade( req, socket, head );
+  if ( requestPath.startsWith( '/socket.io/' ) || requestPath.startsWith( '/_ws/' ) ) {
+		socketServer.onConnectionUpgrade( req, socket, head );
     return;
   }
 

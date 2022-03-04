@@ -1,23 +1,16 @@
 const { WebSocketServer } = require( 'ws' );
+const IntegerForge = require( './integers' );
 
 /**
- * A factory that produces integers and provides them to connected clients. The
- * factory only operates when clients are connected.
- *
- * The factory can produce two types of integers: odd and even. If the initial
- * seed is odd, it will continue to produce odd integers (west-coast-style). If
- * the integer is even (east-coast-style), then even integers come out.
+ * A WebSocket server that produces integers and provides them to connected
+ * clients. The same integers are provided to all connected clients. If no
+ * clients are connected, integer-producing is paused.
  */
-class IntegerService {
+class IntegerSocketServer {
 	/**
-	 * The mysterious source of all integers.
+	 * IntegerForge
 	 */
-	counter = 1;
-
-	/**
-	 * Interval in milliseconds.
-	 */
-	interval = 1000;
+	forge = null;
 
 	/**
 	 * WebSocketServer instance.
@@ -27,8 +20,12 @@ class IntegerService {
 	/**
 	 * Constructor
 	 */
-	constructor( initialSeed = 1 ) {
-		this.counter = parseInt( initialSeed, 10 );
+	constructor() {
+		/**
+		 * Create a single, shared instance of IntegerForge that will create
+		 * integers for all connected clients.
+		 */
+		this.forge = new IntegerForge();
 
 		/**
 		 * Create a "headless" WebSocketServer that we will use to handle connection
@@ -36,11 +33,6 @@ class IntegerService {
 		 * we will pass it to this server instance.
 		 */
 		this.wss = new WebSocketServer( { noServer: true } );
-	}
-
-	createInteger() {
-		this.counter += 2;
-		return this.counter;
 	}
 
 	/**
@@ -53,16 +45,13 @@ class IntegerService {
 		socket.on( 'close', this.onClose.bind( this ) );
 		socket.on( 'message', this.onMessage.bind( this ) );
 
-		// Is the factory already online?
-		if ( this.timer ) {
-			return;
+		// Callback to send the created integer to each connected client.
+		const sendInteger = ( integer ) => {
+			this.wss.clients.forEach( client => client.send( integer ) );
 		}
 
-		console.log( 'Bringing factory online....' );
-
-		this.timer = setInterval( () => {
-			this.wss.clients.forEach( client => client.send( this.createInteger() ) );
-		}, this.interval );
+		// Start the forge.
+		this.forge.start( sendInteger );
 	}
 
 	/**
@@ -73,7 +62,7 @@ class IntegerService {
 	}
 
 	/**
-	 * Handle any messages sent by connected clients.
+	 * Handle (ignore) any messages sent by connected clients.
 	 */
 	onMessage( message ) {
 		console.log(`Received message from client: ${ message.toString() }`);
@@ -88,11 +77,9 @@ class IntegerService {
 			return;
 		}
 
-		console.log( 'No more clients, shutting down the factory....' );
-
-		clearInterval( this.timer );
-		this.timer = null;
+		console.log( 'No more clients!' );
+		this.forge.stop();
 	}
 }
 
-module.exports = IntegerService;
+module.exports = IntegerSocketServer;
