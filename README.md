@@ -6,6 +6,4 @@ This repository also includes [code examples](./examples) that demonstrate how t
 
 ## Documentation
 
-Further information, requirements, and best-practice advice can be found in WordPress VIP's documentation on Node.js:
-
-https://docs.wpvip.com/technical-references/node-js/
+Further information, requirements, and best-practice advice can be found in [WordPress VIP's documentation on Node.js](https://docs.wpvip.com/technical-references/node-js/).
