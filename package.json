@@ -1,23 +1,24 @@
 {
   "name": "vip-go-node-skeleton",
   "version": "0.0.1",
-  "description": "A Node app skeleton for WordPress.com VIP Platform",
+  "description": "A Node.js application skeleton for WordPress VIP",
   "main": "src/index.js",
   "scripts": {
-    "test": "npx @automattic/vip-go-preflight-checks --verbose --wait=2000",
-    "build": "echo 'No build script step configured, skipping build. For further information, refer to our documentation at https://docs.wpvip.com/technical-references/vip-platform/node-js/#h-requirement-2-production-dependencies-and-npm-scripts'",
-    "start": "node ./src/index.js"
+    "build": "echo 'No build step! For more information, see:\nhttps://docs.wpvip.com/technical-references/node-js/building-applications/'",
+    "start": "node ./src/index.js",
+    "test": "node --test src",
+    "validate": "npx @automattic/vip-go-preflight-checks"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Automattic/vip-go-node-skeleton.git"
   },
-  "author": "Ahmed EL AZZABI",
+  "author": "WordPress VIP",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Automattic/vip-go-node-skeleton/issues"
   },
   "homepage": "https://github.com/Automattic/vip-go-node-skeleton#readme",
-  "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {}
 }
