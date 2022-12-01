@@ -20,7 +20,7 @@ const app = http.createServer( ( req, res ) => {
 	 * Extract the pathname, without any query parameters, from the request. This
 	 * allows us to implement routing based purely on the requested path.
 	 */
-	const { pathname } = new URL( req.url, req.headers.host );
+	const { pathname } = new URL( req.url, `http://${ req.headers.host }` );
 
 	/**
 	 * Handle health checks
