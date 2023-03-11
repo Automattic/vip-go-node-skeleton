@@ -7,12 +7,6 @@ const app = http.createServer( ( req, res ) => {
 	const baseUrl = `http://${ req.headers.host }`;
 	const { pathname: requestPath } = new URL( req.url, baseUrl );
 
-	if ( '/' === requestPath && [ 'GET', 'HEAD' ].includes( req.method ) ) {
-		res.writeHead( 200 );
-    res.end( 'Howdy!' );
-		return;
-	}
-
 	/**
 	 * Handle health checks
 	 * https://docs.wpvip.com/technical-references/vip-platform/node-js/
@@ -30,6 +24,12 @@ const app = http.createServer( ( req, res ) => {
 	if ( '/cache-healthcheck' === requestPath && [ 'GET', 'HEAD' ].includes( req.method ) ) {
 		res.writeHead( 200 );
 		res.end( 'ok' );
+		return;
+	}
+	
+	if ( '/' === requestPath && [ 'GET', 'HEAD' ].includes( req.method ) ) {
+		res.writeHead( 200 );
+    	res.end( 'Howdy!' );
 		return;
 	}
 
