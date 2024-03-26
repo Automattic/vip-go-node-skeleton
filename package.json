@@ -7,7 +7,7 @@
     "build": "echo 'No build step! For more information, see:\nhttps://docs.wpvip.com/technical-references/node-js/building-applications/'",
     "start": "node ./src/index.js",
     "test": "node --test src",
-    "validate": "npx @automattic/vip-go-preflight-checks"
+    "validate": "node_version=$(head -n 1 .nvmrc); harmonia -n $node_version"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
     "url": "https://github.com/Automattic/vip-go-node-skeleton/issues"
   },
   "homepage": "https://github.com/Automattic/vip-go-node-skeleton#readme",
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@automattic/vip-go-preflight-checks": "^2.0.17"
+  }
 }
