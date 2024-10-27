@@ -1,4 +1,4 @@
-# WordPress VIP Node.js Skeleton
+# WordPress VIP Node.js Scott 
 
 Welcome to WordPress VIP! This repository is a starting point for building a Node.js application on WordPress VIP. It implements the basic requirements needed to successfully deploy and run an application on the platform. The entrypoint [`/src/index.js`](./src/index.js) is heavily annotated with comments that explain these requirements.
 
