@@ -17,6 +17,16 @@ const COOKIE_NAME = 'vip-go-seg';
 
 const app = express();
 
+/**
+ * WPVIP error pages
+ *
+ * https://docs.wpvip.com/infrastructure/edge-servers/error-pages
+ */
+app.use( ( req, res, next ) => {
+	res.set( 'x-vip-reached-origin', 'true' );
+	next();
+} );
+
 // "cookie-parser" provides easier access to cookies sent with the request.
 app.use( cookieParser() );
 

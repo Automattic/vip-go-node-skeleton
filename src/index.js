@@ -23,6 +23,13 @@ const app = http.createServer( ( req, res ) => {
 	const { pathname } = new URL( req.url, `http://${ req.headers.host }` );
 
 	/**
+	 * WPVIP error pages
+	 *
+	 * https://docs.wpvip.com/infrastructure/edge-servers/error-pages
+	 */
+	res.setHeader( 'x-vip-reached-origin', 'true' );
+
+	/**
 	 * Handle health checks
 	 * https://docs.wpvip.com/technical-references/node-js/health-checks/
 	 *
