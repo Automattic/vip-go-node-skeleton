@@ -23,6 +23,13 @@ const app = http.createServer( ( req, res ) => {
 	const { pathname } = new URL( req.url, `http://${ req.headers.host }` );
 
 	/**
+	 * WPVIP error pages: https://docs.wpvip.com/infrastructure/edge-servers/error-pages
+	 * If this response header is not set, VIP will override the response body of 502/503 requests
+	 * with the configured error page.
+	 */
+	res.setHeader( 'x-vip-reached-origin', 'true' );
+
+	/**
 	 * Handle health checks
 	 * https://docs.wpvip.com/technical-references/node-js/health-checks/
 	 *

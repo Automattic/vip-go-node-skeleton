@@ -11,6 +11,16 @@ const PORT = process.env.PORT || 3000;
 const BASEURL = process.env.BASEURL || 'http://localhost';
 
 /**
+ * WPVIP error pages: https://docs.wpvip.com/infrastructure/edge-servers/error-pages
+ * If this response header is not set, VIP will override the response body of 502/503 requests
+ * with the configured error page.
+ */
+app.use( ( req, res, next ) => {
+	res.set( 'x-vip-reached-origin', 'true' );
+	next();
+} );
+
+/**
  * Handle healthcheck requests
  * 
  * This is a requirement for any application running

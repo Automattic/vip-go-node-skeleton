@@ -17,6 +17,16 @@ const COOKIE_NAME = 'vip-go-seg';
 
 const app = express();
 
+/**
+ * WPVIP error pages: https://docs.wpvip.com/infrastructure/edge-servers/error-pages
+ * If this response header is not set, VIP will override the response body of 502/503 requests
+ * with the configured error page.
+ */
+app.use( ( req, res, next ) => {
+	res.set( 'x-vip-reached-origin', 'true' );
+	next();
+} );
+
 // "cookie-parser" provides easier access to cookies sent with the request.
 app.use( cookieParser() );
 
