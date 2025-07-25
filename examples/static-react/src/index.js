@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 const BASEURL = process.env.BASEURL || 'http://localhost';
 
 /**
- * WPVIP error pages: https://docs.wpvip.com/infrastructure/edge-servers/error-pages
+ * WPVIP error pages: https://docs.wpvip.com/infrastructure/edge-servers/custom-error-pages
  * If this response header is not set, VIP will override the response body of 502/503 requests
  * with the configured error page.
  */
